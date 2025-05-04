@@ -6,11 +6,17 @@ fn main() {
 
 #[component]
 fn App() -> Element {
-    rsx! { "HotDog!" }
+    rsx! {
+        Header {}
+        DogApp { breed: "corgi" }
+        Footer {}
+    }
 }
 
 #[component]
 fn DogApp(props: DogAppProps) -> Element {
+    tracing::info!("Rendered with breed: {breed}");
+
     todo!()
 }
 
