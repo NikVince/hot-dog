@@ -26,13 +26,16 @@ fn Title() -> Element {
 
 #[component]
 fn DogView() -> Element {
+    let skip = move |evt| {};
+    let save = move |evt| {};
+
     rsx! {
         div { id: "dogview",
             img { src: "https://images.dog.ceo/breeds/pitbull/dog-3981540_1280.jpg" }
         }
         div { id: "buttons",
-            button { id: "skip", "skip" }
-            button { id: "save", "save!" }
+            button { onclick: skip, id: "skip", "skip" }
+            button { onclick: save, id: "save", "save!" }
         }
     }
 }
