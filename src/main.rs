@@ -28,10 +28,11 @@ fn Title() -> Element {
 fn DogView() -> Element {
     let skip = move |evt| {};
     let save = move |evt| {};
+    let img_src = use_hook(|| "https://images.dog.ceo/breeds/pitbull/dog-3981540_1280.jpg");
 
     rsx! {
         div { id: "dogview",
-            img { src: "https://images.dog.ceo/breeds/pitbull/dog-3981540_1280.jpg" }
+            img { src: "{img_src}" }
         }
         div { id: "buttons",
             button { onclick: skip, id: "skip", "skip" }
