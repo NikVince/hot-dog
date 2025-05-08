@@ -1,6 +1,8 @@
 // Expose a `save_dog` endpoint on our server that takes an "image" parameter
+use dioxus::prelude::*;
+
 #[server]
-async fn save_dog(image: String) -> Result<(), ServerFnError> {
+pub async fn save_dog(image: String) -> Result<(), ServerFnError> {
     use std::io::Write;
 
     // Open the `dogs.txt` file in append-only mode, creating it if it doesn't exist;

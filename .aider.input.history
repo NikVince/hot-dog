@@ -10,3 +10,128 @@
 
 # 2025-05-08 18:41:20.611594
 +please add aider to gitignore
+
+# 2025-05-08 23:17:24.335158
++y
+
+# 2025-05-08 23:17:45.874933
++m
+
+# 2025-05-08 23:17:48.162910
++n
+
+# 2025-05-08 23:17:55.989164
++/add *
+
+# 2025-05-08 23:18:55.197074
++please tell me why my dioxus project is not building and what the problem is. propose a solution if possible.
+
+# 2025-05-08 23:21:58.196905
++/add *
+
+# 2025-05-08 23:22:05.733178
++please tell me why my dioxus project is not building and what the problem is. propose a solution if possible.
+
+# 2025-05-08 23:23:53.822772
++Y
+
+# 2025-05-08 23:25:57.786699
++(base) ➜  hot-dog git:(main) ✗ dx serve --platform web
++23:24:39 [dev] -----------------------------------------------------------------
++                Serving your Dioxus app: hot-dog
++                • Press `ctrl+c` to exit the server
++                • Press `r` to rebuild the app
++                • Press `p` to toggle automatic rebuilds
++                • Press `v` to toggle verbose logging
++                • Press `/` for more commands and shortcuts
++                Learn more at https://dioxuslabs.com/learn/0.6/getting_started
++               ----------------------------------------------------------------
++23:24:40 [cargo] error: cannot find attribute `server` in this scope
++ --> src/guide_backend.rs:2:3
++  |
++2 | #[server]
++  |   ^^^^^^
++  |
++help: consider importing one of these attribute macros
++  |
++2 + use crate::server;
++  |
++2 + use dioxus::prelude::server;
++  |
++2 + use dioxus_server_macro::server;
++  |
++
++23:24:40 [cargo] error[E0412]: cannot find type `ServerFnError` in this scope
++ --> src/guide_backend.rs:3:48
++  |
++3 | async fn save_dog(image: String) -> Result<(), ServerFnError> {
++  |                                                ^^^^^^^^^^^^^ not found in this scope
++  |
++help: consider importing one of these enums
++  |
++2 + use crate::ServerFnError;
++  |
++2 + use dioxus::prelude::ServerFnError;
++  |
++
++23:24:40 [cargo] error[E0603]: function `save_dog` is private
++ --> src/main.rs:5:20
++  |
++5 | use guide_backend::save_dog;
++  |                    ^^^^^^^^ private function
++  |
++note: the function `save_dog` is defined here
++ --> src/guide_backend.rs:3:1
++  |
++3 | async fn save_dog(image: String) -> Result<(), ServerFnError> {
++  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++
++23:24:40 [cargo] error: cannot find attribute `server` in this scope
++ --> src/guide_backend.rs:2:3
++  |
++2 | #[server]
++  |   ^^^^^^
++  |
++help: consider importing one of these attribute macros
++  |
++2 + use crate::server;
++  |
++2 + use dioxus::prelude::server;
++  |
++2 + use dioxus_server_macro::server;
++  |
++
++23:24:40 [cargo] error[E0412]: cannot find type `ServerFnError` in this scope
++ --> src/guide_backend.rs:3:48
++  |
++3 | async fn save_dog(image: String) -> Result<(), ServerFnError> {
++  |                                                ^^^^^^^^^^^^^ not found in this scope
++  |
++help: consider importing one of these enums
++  |
++2 + use crate::ServerFnError;
++  |                                                                                                                                     2 + use dioxus::prelude::ServerFnError;                                                                                                   |                                                                                                                                                                                                                                                                             23:24:40 [cargo] error[E0603]: function `save_dog` is private
++ --> src/main.rs:5:20
++  |
++5 | use guide_backend::save_dog;
++  |                    ^^^^^^^^ private function
++  |
++note: the function `save_dog` is defined here
++ --> src/guide_backend.rs:3:1
++  |
++3 | async fn save_dog(image: String) -> Result<(), ServerFnError> {
++  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++
++23:24:40 [cargo] Some errors have detailed explanations: E0412, E0603.
++23:24:40 [cargo] For more information about an error, try `rustc --explain E0412`.
++23:24:40 [cargo] error: could not compile `hot-dog` (bin "hot-dog") due to 3 previous errors
++23:24:40 [cargo] Caused by:
++23:24:40 [dev] Build failed: Other(Cargo build failed, signaled by the compiler. Toggle tracing mode (press `t`) for more information.)
++╭────────────────────────────────────────────────────────────────────────────────────────── /:more ╮
++│  App:     ━━━━━━━━━━━━━━━━━━━━━━━━━━  ❌           Platform: Web + fullstack                     │
++│  Server:  ━━━━━━━━━━━━━━━━━━━━━━━━━━  ❌           App features: ["dioxus/web"]                  │
++│  Status:  Failed                                   Serving at: http://127.0.0.1:8080             │
++╰──────────────────────────────────────────────────────────────────────────────────────────────────╯ these are the errors i am currently getting, please evaluate a solution. I am following the guide of the official dioxus documentation at "https://dioxuslabs.com/learn/0.6/guide/backend#".
+
+# 2025-05-08 23:26:04.004430
++y

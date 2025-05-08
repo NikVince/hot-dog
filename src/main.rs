@@ -1,5 +1,9 @@
 use dioxus::prelude::*;
 
+// Server side imports
+mod guide_backend;
+use guide_backend::save_dog;
+
 static CSS: Asset = asset!("/assets/main.css");
 
 fn main() {
@@ -47,7 +51,18 @@ fn DogView() -> Element {
         }
         div { id: "buttons",
             button { onclick: move |_| img_src.restart(), id: "skip", "skip" }
-            button { onclick: move |_| img_src.restart(), id: "save", "save!" }
+
+            // save button with server integration saving to dogs.txt
+            button {
+                id: "save",
+                onclick: move |_| async move {
+                    let current = img_src.cloned().unwrap();
+                    img_src.restart();
+                    _ = save_dog(current).await;
+                },
+
+                "save!"
+            }
         }
     }
 }
