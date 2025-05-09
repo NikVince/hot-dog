@@ -11,8 +11,10 @@ dioxus = { version = "0.6.0", features = ["fullstack"] } # Enable the fullstack 
 dioxus_server_macro = "0.6.2"
 reqwest = { version = "0.12.15", features = ["json"] }
 serde = { version = "1.0.219", features = ["derive"] }
+rusqlite = { version = "0.32.1", optional = true } 
 
-# Remove the custom [features] section as "fullstack" handles this
+[features]
+server = ["dioxus/server", "dep:rusqlite"] 
 
 [profile]
 
