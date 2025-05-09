@@ -153,3 +153,28 @@
 
 # 2025-05-09 23:36:05.036967
 +Y
+
+# 2025-05-09 23:38:31.945116
++this is a test prompt reply fizz 
+
+# 2025-05-09 23:39:19.079046
++N
+
+# 2025-05-09 23:40:03.179705
++(base) ➜  hot-dog git:(main) ✗ git status
++On branch main
++Your branch is up to date with 'origin/main'.
++
++Changes not staged for commit:
++  (use "git add <file>..." to update what will be committed)
++  (use "git restore <file>..." to discard changes in working directory)
++        modified:   .aider.chat.history.md
++        modified:   .aider.input.history
++
++no changes added to commit (use "git add" and/or "git commit -a")
++(base) ➜  hot-dog git:(main) ✗ ls
++assets  Cargo.lock  Cargo.toml  Dioxus.toml  dogs.txt  README.md  src  target
++(base) ➜  hot-dog git:(main) ✗ this demonstates that the chat is still appearing inside the commits, please eliminate these files completely.
+
+# 2025-05-09 23:40:20.868784
++Y
