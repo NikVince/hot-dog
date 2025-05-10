@@ -1,3 +1,4 @@
+use crate::Route;
 use dioxus::prelude::*;
 
 // Server side imports
@@ -12,8 +13,9 @@ fn main() {
 
 #[derive(Routable, Clone, PartialEq)]
 enum Route {
+    #[layout(NavBar)]
     #[route("/")]
-    DogView, // <---- a DogView component must be in scope
+    DogView,
 
     #[route("/:..segments")]
     PageNotFound { segments: Vec<String> },
@@ -75,5 +77,17 @@ fn DogView() -> Element {
                 "save!"
             }
         }
+    }
+}
+
+#[component]
+pub fn NavBar() -> Element {
+    rsx! {
+        div { id: "title",
+            Link { to: Route::DogView,
+                h1 { "🌭 HotDog! " }
+            }
+        }
+        Outlet::<Route> {}
     }
 }
