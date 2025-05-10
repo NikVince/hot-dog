@@ -1,4 +1,6 @@
 // The database is only available to server code
+use dioxus::prelude::*;
+
 #[cfg(feature = "server")]
 thread_local! {
     pub static DB: rusqlite::Connection = {
@@ -18,8 +20,8 @@ thread_local! {
     };
 }
 
-#[server]
-async fn save_dog(image: String) -> Result<(), ServerFnError> {
+#[server(SaveDog)]
+pub async fn save_dog(image: String) -> Result<(), ServerFnError> {
     DB.with(|f| f.execute("INSERT INTO dogs (url) VALUES (?1)", &[&image]))?;
     Ok(())
 }
