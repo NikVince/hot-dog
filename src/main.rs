@@ -1,8 +1,4 @@
 use dioxus::prelude::*;
-mod backend;
-mod components;
-
-use crate::components::*;
 
 // Server side imports
 mod guide_databases;
@@ -14,14 +10,26 @@ fn main() {
     dioxus::launch(App);
 }
 
+#[derive(Routable, Clone, PartialEq)]
+enum Route {
+    #[route("/")]
+    DogView, // <---- a DogView component must be in scope
+
+    #[route("/:..segments")]
+    PageNotFound { segments: Vec<String> },
+}
+
 #[component]
 fn App() -> Element {
     rsx! {
-        document::Stylesheet { href: CSS }
+        document::Stylesheet { href: asset!("/assets/main.css") }
+
+        // 📣 delete Title and DogView and replace it with the Router component.
         Router::<Route> {}
     }
 }
 
+// Keep the existing Title and DogView components as they are used by the router
 #[component]
 fn Title() -> Element {
     rsx! {
