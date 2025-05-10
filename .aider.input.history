@@ -461,3 +461,113 @@
 
 # 2025-05-10 14:17:05.441122
 +Y
+
+# 2025-05-10 14:37:10.451800
++Plese explain the following compilation errors and tell me how to solve them.(base) ➜  hot-dog git:(main) dx serve --platform web
++14:36:26 [dev] -----------------------------------------------------------------
++                Serving your Dioxus app: hot-dog
++                • Press `ctrl+c` to exit the server
++                • Press `r` to rebuild the app
++                • Press `p` to toggle automatic rebuilds
++                • Press `v` to toggle verbose logging
++                • Press `/` for more commands and shortcuts
++                Learn more at https://dioxuslabs.com/learn/0.6/getting_started
++               ----------------------------------------------------------------
++14:36:27 [cargo] error[E0255]: the name `Route` is defined multiple times
++  --> src/main.rs:15:1
++   |
++1  | use crate::Route;
++   |     ------------ previous import of the type `Route` here
++...
++15 | enum Route {
++   | ^^^^^^^^^^ `Route` redefined here
++   |
++   = note: `Route` must be defined only once in the type namespace of this module
++help: you can use `as` to change the binding name of the import
++   |
++1  | use crate::Route as OtherRoute;
++   |                  +++++++++++++
++
++14:36:27 [cargo] error[E0255]: the name `Route` is defined multiple times
++  --> src/main.rs:15:1
++   |
++1  | use crate::Route;
++   |     ------------ previous import of the type `Route` here
++...
++15 | enum Route {
++   | ^^^^^^^^^^ `Route` redefined here
++   |
++   = note: `Route` must be defined only once in the type namespace of this module
++help: you can use `as` to change the binding name of the import
++   |
++1  | use crate::Route as OtherRoute;
++   |                  +++++++++++++
++
++14:36:27 [cargo] error[E0433]: failed to resolve: there are too many leading `super` keywords
++   --> src/main.rs:100:38
++    |
++100 |     let mut favorites = use_resource(super::backend::list_dogs).suspend()?;
++    |                                      ^^^^^ there are too many leading `super` keywords
++
++14:36:27 [cargo] error[E0433]: failed to resolve: there are too many leading `super` keywords
++   --> src/main.rs:100:38
++    |
++100 |     let mut favorites = use_resource(super::backend::list_dogs).suspend()?;
++    |                                      ^^^^^ there are too many leading `super` keywords
++
++14:36:27 [cargo] Some errors have detailed explanations: E0255, E0433.
++14:36:27 [cargo] For more information about an error, try `rustc --explain E0255`.
++14:36:27 [cargo] error: could not compile `hot-dog` (bin "hot-dog") due to 2 previous errors; 1 warning emitted
++14:36:27 [cargo] Caused by:
++14:36:27 [cargo]   process didn't exit successfully: `/home/nikvince/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc --crate-name hot_dog --edition=2021 src/main.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type bin --emit=dep-info,link -C opt-level=1 -C embed-bitcode=no -C debuginfo=2 -C debug-assertions=on --check-cfg 'cfg(docsrs,test)' --check-cfg 'cfg(feature, values("server"))' -C metadata=b1ae9ed439494847 -C extra-filename=-7a20b833674ffdb5 --out-dir /home/nikvince/programming/repos/hot-dog/target/wasm32-unknown-unknown/wasm-dev/deps --target wasm32-unknown-unknown -C incremental=/home/nikvince/programming/repos/hot-dog/target/wasm32-unknown-unknown/wasm-dev/incremental -L dependency=/home/nikvince/programming/repos/hot-dog/target/wasm32-unknown-unknown/wasm-dev/deps -L dependency=/home/nikvince/programming/repos/hot-dog/target/wasm-dev/deps --extern dioxus=/home/nikvince/programming/repos/hot-dog/target/wasm32-unknown-unknown/wasm-dev/deps/libdioxus-6de41a4513a7c0c4.rlib --extern dioxus_server_macro=/home/nikvince/programming/repos/hot-dog/target/wasm-dev/deps/libdioxus_server_macro-ba23addf3189e8eb.so --extern reqwest=/home/nikvince/programming/repos/hot-dog/target/wasm32-unknown-unknown/wasm-dev/deps/libreqwest-26a9d00d3fd9e807.rlib --extern serde=/home/nikvince/programming/repos/hot-dog/target/wasm32-unknown-unknown/wasm-dev/deps/libserde-f8c86a85fea57006.rlib` (exit status: 1)
++14:36:27 [dev] Build failed: Other(Cargo build failed, signaled by the compiler. Toggle tracing mode (press `t`) for more information.)
++╭────────────────────────────────────────────────────────────────────────────────────────── /:more ╮
++│  App:     ━━━━━━━━━━━━━━━━━━━━━━━━━━  ❌           Platform: Web + fullstack                     │
++│  Server:  ━━━━━━━━━━━━━━━━━━━━━━━━━━  ❌           App features: ["dioxus/web"]                  │
++│  Status:  Failed                                   Serving at: http://127.0.0.1:8080
+
+# 2025-05-10 14:38:14.875472
++Y
+
+# 2025-05-10 14:38:56.903538
++(base) ➜  hot-dog git:(main) ✗ dx serve --platform web
++14:38:46 [dev] -----------------------------------------------------------------
++                Serving your Dioxus app: hot-dog
++                • Press `ctrl+c` to exit the server
++                • Press `r` to rebuild the app
++                • Press `p` to toggle automatic rebuilds
++                • Press `v` to toggle verbose logging
++                • Press `/` for more commands and shortcuts
++                Learn more at https://dioxuslabs.com/learn/0.6/getting_started
++               ----------------------------------------------------------------
++14:38:46 [cargo] error[E0425]: cannot find value `list_dogs` in module `guide_databases`
++  --> src/main.rs:99:55
++   |
++99 |     let mut favorites = use_resource(guide_databases::list_dogs).suspend()?;
++   |                                                       ^^^^^^^^^ not found in `guide_databases`
++
++14:38:46 [cargo] error[E0425]: cannot find value `list_dogs` in module `guide_databases`
++  --> src/main.rs:99:55
++   |
++99 |     let mut favorites = use_resource(guide_databases::list_dogs).suspend()?;
++   |                                                       ^^^^^^^^^ not found in `guide_databases`
++
++14:38:47 [cargo] For more information about this error, try `rustc --explain E0425`.
++14:38:47 [cargo] error: could not compile `hot-dog` (bin "hot-dog") due to 1 previous error
++14:38:47 [cargo] Caused by:
++14:38:47 [cargo]   process didn't exit successfully: `/home/nikvince/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rustc --crate-name hot_dog --edition=2021 src/main.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type bin --emit=dep-info,link -C opt-level=1 -C embed-bitcode=no -C debuginfo=2 -C debug-assertions=on --check-cfg 'cfg(docsrs,test)' --check-cfg 'cfg(feature, values("server"))' -C metadata=b1ae9ed439494847 -C extra-filename=-7a20b833674ffdb5 --out-dir /home/nikvince/programming/repos/hot-dog/target/wasm32-unknown-unknown/wasm-dev/deps --target wasm32-unknown-unknown -C incremental=/home/nikvince/programming/repos/hot-dog/target/wasm32-unknown-unknown/wasm-dev/incremental -L dependency=/home/nikvince/programming/repos/hot-dog/target/wasm32-unknown-unknown/wasm-dev/deps -L dependency=/home/nikvince/programming/repos/hot-dog/target/wasm-dev/deps --extern dioxus=/home/nikvince/programming/repos/hot-dog/target/wasm32-unknown-unknown/wasm-dev/deps/libdioxus-6de41a4513a7c0c4.rlib --extern dioxus_server_macro=/home/nikvince/programming/repos/hot-dog/target/wasm-dev/deps/libdioxus_server_macro-ba23addf3189e8eb.so --extern reqwest=/home/nikvince/programming/repos/hot-dog/target/wasm32-unknown-unknown/wasm-dev/deps/libreqwest-26a9d00d3fd9e807.rlib --extern serde=/home/nikvince/programming/repos/hot-dog/target/wasm32-unknown-unknown/wasm-dev/deps/libserde-f8c86a85fea57006.rlib` (exit status: 1)
++14:38:47 [dev] Build failed: Other(Cargo build failed, signaled by the compiler. Toggle tracing mode (press `t`) for more information.)
++╭────────────────────────────────────────────────────────────────────────────────────────── /:more ╮
++│  App:     ━━━━━━━━━━━━━━━━━━━━━━━━━━  ❌           Platform: Web + fullstack                     │
++│  Server:  ━━━━━━━━━━━━━━━━━━━━━━━━━━  ❌           App features: ["dioxus/web"]                  │
++│  Status:  Failed                                   Serving at: http://127.0.0.1:8080             │
++╰──────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+# 2025-05-10 14:40:03.487429
++Y
+
+# 2025-05-10 14:41:20.251251
++N
+
+# 2025-05-10 14:41:22.937472
++Y
