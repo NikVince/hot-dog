@@ -17,8 +17,8 @@ enum Route {
     #[route("/")]
     DogView,
 
-    #[route("/:..segments")]
-    PageNotFound { segments: Vec<String> },
+    #[route("/favorites")]
+    Favorites,
 }
 
 #[component]
@@ -90,4 +90,9 @@ pub fn NavBar() -> Element {
         }
         Outlet::<Route> {}
     }
+}
+
+#[component]
+pub fn Favorites() -> Element {
+    rsx! { "favorites!" }
 }
