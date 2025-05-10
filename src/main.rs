@@ -18,8 +18,7 @@ fn main() {
 fn App() -> Element {
     rsx! {
         document::Stylesheet { href: CSS }
-        Title {}
-        DogView {}
+        Router::<Route> {}
     }
 }
 

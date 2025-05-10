@@ -277,3 +277,181 @@
 
 # 2025-05-10 10:52:53.254677
 +Y
+
+# 2025-05-10 11:21:49.049544
++/add *
+
+# 2025-05-10 11:22:49.229775
++please transfer the elements created inside the guide_router.rs file to the main.rs file, they were not supposed to be placed in that location.
+
+# 2025-05-10 11:23:06.843600
++N
+
+# 2025-05-10 11:23:09.867652
++*add
+
+# 2025-05-10 11:23:30.565623
++/add *
+
+# 2025-05-10 11:24:35.579754
++/add guide_router.rs
+
+# 2025-05-10 11:24:40.051337
++N
+
+# 2025-05-10 11:26:03.233226
++/add *
+
+# 2025-05-10 11:27:20.065235
++Why is guide_router.rs not been adde with '/add *', it is inside the /src folder and i clearly am able to see it with 'ls' or 'cat'?
+
+# 2025-05-10 11:28:13.958902
++N
+
+# 2025-05-10 11:28:17.729009
++(base) ➜  src git:(main) ✗ cat guide_router.rs
++use dioxus::prelude::*;
++
++#[derive(Routable, Clone, PartialEq)]
++enum Route {
++    #[route("/")]
++    DogView, // <---- a DogView component must be in scope
++
++    #[route("/:..segments")]
++    PageNotFound { segments: Vec<String> },
++}
++
++fn DogView() -> Element {
++    todo!()
++}
++
++fn app() -> Element {
++    rsx! {
++        document::Stylesheet { href: asset!("/assets/main.css") }
++
++        // 📣 delete Title and DogView and replace it with the Router component.
++        Router::<Route> {}
++    }
++}
+
+# 2025-05-10 11:29:28.764980
++y
+
+# 2025-05-10 11:31:08.660876
++I am not encountering the following errors after the modifications: (base) ➜  hot-dog git:(main) ✗ dx serve --platform web
++11:30:25 [dev] -----------------------------------------------------------------
++                Serving your Dioxus app: hot-dog
++                • Press `ctrl+c` to exit the server
++                • Press `r` to rebuild the app
++                • Press `p` to toggle automatic rebuilds
++                • Press `v` to toggle verbose logging
++                • Press `/` for more commands and shortcuts
++                Learn more at https://dioxuslabs.com/learn/0.6/getting_started
++               ----------------------------------------------------------------
++11:30:25 [cargo] error[E0583]: file not found for module `backend`
++ --> src/main.rs:2:1
++  |
++2 | mod backend;
++  | ^^^^^^^^^^^^
++  |
++  = help: to create the module `backend`, create file "src/backend.rs" or "src/backend/mod.rs"
++  = note: if there is a `mod backend` elsewhere in the crate already, import it with `use crate::...` instead
++
++11:30:25 [cargo] error[E0583]: file not found for module `favorites`
++ --> src/components/mod.rs:1:1
++  |
++1 | mod favorites;
++  | ^^^^^^^^^^^^^^
++  |
++  = help: to create the module `favorites`, create file "src/components/favorites.rs" or "src/components/favorites/mod.rs"
++  = note: if there is a `mod favorites` elsewhere in the crate already, import it with `use crate::...` instead
++
++11:30:25 [cargo] error[E0583]: file not found for module `nav`
++ --> src/components/mod.rs:2:1
++  |
++2 | mod nav;
++  | ^^^^^^^^
++  |
++  = help: to create the module `nav`, create file "src/components/nav.rs" or "src/components/nav/mod.rs"
++  = note: if there is a `mod nav` elsewhere in the crate already, import it with `use crate::...` instead
++
++11:30:25 [cargo] error[E0583]: file not found for module `view`
++ --> src/components/mod.rs:3:1
++  |
++3 | mod view;
++  | ^^^^^^^^^
++  |
++  = help: to create the module `view`, create file "src/components/view.rs" or "src/components/view/mod.rs"
++  = note: if there is a `mod view` elsewhere in the crate already, import it with `use crate::...` instead
++
++11:30:25 [cargo] error[E0583]: file not found for module `backend`
++ --> src/main.rs:2:1
++  |
++2 | mod backend;
++  | ^^^^^^^^^^^^
++  |
++  = help: to create the module `backend`, create file "src/backend.rs" or "src/backend/mod.rs"
++  = note: if there is a `mod backend` elsewhere in the crate already, import it with `use crate::...` instead
++
++11:30:25 [cargo] error[E0583]: file not found for module `favorites`
++ --> src/components/mod.rs:1:1
++  |
++1 | mod favorites;
++  | ^^^^^^^^^^^^^^
++  |
++  = help: to create the module `favorites`, create file "src/components/favorites.rs" or "src/components/favorites/mod.rs"
++  = note: if there is a `mod favorites` elsewhere in the crate already, import it with `use crate::...` instead
++
++11:30:25 [cargo] error[E0583]: file not found for module `nav`
++ --> src/components/mod.rs:2:1
++  |
++2 | mod nav;
++  | ^^^^^^^^
++  |
++  = help: to create the module `nav`, create file "src/components/nav.rs" or "src/components/nav/mod.rs"
++  = note: if there is a `mod nav` elsewhere in the crate already, import it with `use crate::...` instead
++
++11:30:25 [cargo] error[E0583]: file not found for module `view`
++ --> src/components/mod.rs:3:1
++  |
++3 | mod view;
++  | ^^^^^^^^^
++  |
++  = help: to create the module `view`, create file "src/components/view.rs" or "src/components/view/mod.rs"
++  = note: if there is a `mod view` elsewhere in the crate already, import it with `use crate::...` instead
++
++11:30:25 [cargo] error[E0412]: cannot find type `Route` in this scope
++  --> src/main.rs:21:18
++   |
++21 |         Router::<Route> {}
++   |                  ^^^^^ not found in this scope
++   |
++help: you might be missing a type parameter
++   |
++18 | fn App<Route>() -> Element {
++   |       +++++++
++
++11:30:25 [cargo] error[E0412]: cannot find type `Route` in this scope
++  --> src/main.rs:21:18
++   |
++21 |         Router::<Route> {}
++   |                  ^^^^^ not found in this scope
++   |
++help: you might be missing a type parameter
++   |
++18 | fn App<Route>() -> Element {
++   |       +++++++
++
++11:30:25 [cargo] Some errors have detailed explanations: E0412, E0583.
++11:30:25 [cargo] For more information about an error, try `rustc --explain E0412`.
++11:30:25 [cargo] error: could not compile `hot-dog` (bin "hot-dog") due to 5 previous errors; 4 warnings emitted
++11:30:25 [cargo] Caused by:
++11:30:25 [dev] Build failed: Other(Cargo build failed, signaled by the compiler. Toggle tracing mode (press `t`) for more information.)
++╭────────────────────────────────────────────────────────────────────────────────────────── /:more ╮
++│  App:     ━━━━━━━━━━━━━━━━━━━━━━━━━━  ❌           Platform: Web + fullstack                     │
++│  Server:  ━━━━━━━━━━━━━━━━━━━━━━━━━━  ❌           App features: ["dioxus/web"]                  │
++│  Status:  Failed                                   Serving at: http://127.0.0.1:8080             │
++╰─────────────────────────────────────────────────────────────────────────────────────────
+
+# 2025-05-10 11:31:12.006436
++N
