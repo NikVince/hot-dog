@@ -1,5 +1,7 @@
 # 🌭 Hot Dog
 
+STATUS: Project completed following the official Dioxus documentation.
+
 A fun web application for dog lovers built with Dioxus, a Rust-based React-like framework. This project allows users to fetch random dog images and save their favorites.
 
 ![Dioxus](https://img.shields.io/badge/Dioxus-0.6-blue)
